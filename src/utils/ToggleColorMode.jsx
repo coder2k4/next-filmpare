@@ -1,11 +1,10 @@
-import React, { createContext, useMemo, useState } from 'react';
+import React, { useState, useMemo, createContext } from 'react';
 
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@mui/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-export const ColorModeContext = createContext(undefined);
+export const ColorModeContext = createContext();
 
-function ToggleColorMode({ children }) {
+const ToggleColorMode = ({ children }) => {
   const [mode, setMode] = useState('light');
 
   const toggleColorMode = () => {
@@ -16,7 +15,7 @@ function ToggleColorMode({ children }) {
     palette: {
       mode,
     },
-  }));
+  }), [mode]);
 
   return (
     <ColorModeContext.Provider value={{ mode, setMode, toggleColorMode }}>
@@ -25,6 +24,6 @@ function ToggleColorMode({ children }) {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
+};
 
 export default ToggleColorMode;

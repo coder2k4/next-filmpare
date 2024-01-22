@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 
-import { CssBaseline, Switch } from '@mui/material';
-import { Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
+import { Route, Switch } from 'react-router-dom';
 
 import useStyles from './styles';
 import NavBar from './components/NavBar/NavBar';
+import Movies from './components/Movies/Movies';
 
 function App() {
   const classes = useStyles();
@@ -17,18 +18,18 @@ function App() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route exact path="/movie/:id">
-            {/* <MovieInformation /> */}
-          </Route>
-          <Route exact path="/actors/:id">
-            {/* <Actors /> */}
-          </Route>
+          {/* <Route exact path="/movie/:id"> */}
+          {/*  /!* <MovieInformation /> *!/ */}
+          {/* </Route> */}
+          {/* <Route exact path="/actors/:id"> */}
+          {/*  /!* <Actors /> *!/ */}
+          {/* </Route> */}
           <Route exact path={['/', '/approved']}>
-            {/* <Movies /> */}
+            <Movies />
           </Route>
-          <Route exact path="/profile/:id">
-            {/* <Profile /> */}
-          </Route>
+          {/* <Route exact path="/profile/:id"> */}
+          {/*  /!* <Profile /> *!/ */}
+          {/* </Route> */}
         </Switch>
       </main>
       <div ref={alanBtnContainer} />
