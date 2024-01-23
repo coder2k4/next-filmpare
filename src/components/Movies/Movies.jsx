@@ -5,6 +5,8 @@ import { Box, CircularProgress, Typography, useMediaQuery } from '@mui/material'
 
 import MovieList from '../MovieList/MovieList';
 import { useGetMoviesQuery } from '../../services/TMDB';
+import Pagination from '../Pagination/Pagination';
+import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
 
 const Movies = () => {
   const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory);
@@ -15,7 +17,8 @@ const Movies = () => {
     genreIdOrCategoryName, page, searchQuery,
   });
 
-  const lg = useMediaQuery('(max-width:900px)');
+  // const lg = useMediaQuery('(max-width:900px)');
+  const lg = useMediaQuery((theme) => theme.breakpoints.only('lg'));
   const numberOfMovies = lg ? 17 : 19;
 
   // const numberOfMovies = 17;
@@ -44,7 +47,10 @@ const Movies = () => {
 
   return (
     <div>
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
+      <FeaturedMovie movie={data.results[0]} />
       <MovieList movies={data} numberOfMovies={numberOfMovies} excludeFirst />
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   );
 };

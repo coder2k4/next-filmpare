@@ -4,7 +4,6 @@ import {
   Box,
   CircularProgress,
   Divider,
-  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -13,6 +12,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import genreIcons from '../../assets/genres';
 import { useGetGenresQuery } from '../../services/TMDB';
